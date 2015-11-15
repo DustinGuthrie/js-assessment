@@ -43,7 +43,7 @@ describe('counter', function () {
 
     for (var i = 1; i <= 5; i++) {
       expect(nums.length).to.eql(i);
-
+      console.log(i);
       this.clock.tick(100);
     }
 

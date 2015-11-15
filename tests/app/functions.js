@@ -9,6 +9,16 @@ describe('functions', function() {
         sayItCalled = true;
         return greeting + ', ' + name + (punctuation || '!');
       };
+  var sum = function () {
+    var args = [].slice.call(arguments);
+    var total = 0;
+    args.forEach(function (item) {
+      total += item;
+    });
+    return total;
+  };
+  // sum.apply(this, 1,3,2)
+  // sum(1,3,2)
 
   beforeEach(function () {
     sayItCalled = false;
@@ -18,7 +28,10 @@ describe('functions', function() {
     var result = functionsAnswers.argsAsArray(sayIt, [ 'Hello', 'Ellie', '!' ]);
     expect(result).to.eql('Hello, Ellie!');
     expect(sayItCalled).to.be.ok;
+    var result2 = functionsAnswers.argsAsArray(sum, [1,2,5]);
+    expect(result2).to.eql(8);
   });
+
 
   it('you should be able to change the context in which a function is called', function() {
     var speak = function() {
